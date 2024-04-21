@@ -3,9 +3,12 @@
         <h2 class="text-center montserrat">ENTER YOUR BUDGET</h2>
         <div class="card">
             <div class="card-body">
-                <input type="tetxt" class="form-control form-control-lg" placeholder="Enter your budget..">
+                <div *ngIf="incorrectAmount" class="text-center mb-3">
+                    <span class="badge text-bg-danger ">THE BUDGET MUST BE GREATER THAN ZERO</span>
+                </div>
+                <input [(ngModel)]="amount" type="number" class="form-control form-control-lg" placeholder="Enter your budget..">
                 <div class="d-grid gap-2">
-                    <button routerLink="/expenses" type="button" class="btn btn-secondary btn-lg mt-2">NEXT</button>
+                    <button (click)="addBudget()" type="button" class="btn btn-secondary btn-lg mt-2">NEXT</button>
                 </div>
             </div>
         </div>
