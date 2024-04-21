@@ -7,13 +7,14 @@ import { Expense } from '../interfaces/expense';
 })
 export class BudgetService {
   public budget: number = 0;
-  public reset: number = 0;
+  public rest: number = 0;
 
   private expenses$ = new Subject<Expense>();
 
   constructor() { }
 
   addExpense(expense: Expense) {
+    this.rest = this.rest - expense.amount;
     this.expenses$.next(expense);
   }
 

@@ -1,7 +1,7 @@
 <h4 class="text-center">Enter your expense</h4>
 <hr>
 <div *ngIf="formInvalid" class="text-center mb-3">
-    <span class="badge text-bg-danger ">INCORRECT EXPENSE OR AMOUNT</span>
+    <span class="badge text-bg-danger ">{{ textInvalidForm }}</span>
 </div>
 <div class="mb-3">
     <label for="name" class="form-label">Expense</label>

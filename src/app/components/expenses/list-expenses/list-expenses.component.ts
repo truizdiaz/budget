@@ -17,7 +17,7 @@ export class ListExpensesComponent implements OnDestroy {
 
   constructor(private budgetService: BudgetService) {
     this.budget = this.budgetService.budget;
-    this.rest = this.budgetService.reset;
+    this.rest = this.budgetService.rest;
     this.sub = this.budgetService.getExpense().subscribe(expense => {
       this.rest = this.rest - expense.amount;
       this.listExpenses.push(expense)
@@ -28,4 +28,15 @@ export class ListExpensesComponent implements OnDestroy {
     this.sub.unsubscribe();
   }
 
+  applyColorRest(): string {
+    if(this.budget / 4 > this.rest) {
+      return 'alert alert-danger';
+    } else if(this.budget / 2 > this.rest) {
+      return 'alert alert-warning';
+    } else {
+      return 'alert alert-secondary';
+    }
+
+   
+  }
 }

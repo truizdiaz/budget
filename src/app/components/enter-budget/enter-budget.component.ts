@@ -18,7 +18,7 @@ export class EnterBudgetComponent {
   addBudget() {
     if(this.amount > 0) {
       this.budgetService.budget = this.amount;
-      this.budgetService.reset = this.amount;
+      this.budgetService.rest = this.amount;
       this.router.navigate(['/expenses'])
     } else {
       this.incorrectAmount = true;

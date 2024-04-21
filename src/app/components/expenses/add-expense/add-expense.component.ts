@@ -10,6 +10,7 @@ import { BudgetService } from '../../../services/budget.service';
 export class AddExpenseComponent {
   name: string = '';
   amount: number = 0;
+  textInvalidForm: string = 'INCORRECT EXPENSE OR AMOUNT'
 
   formInvalid: boolean = false;
 
@@ -19,6 +20,13 @@ export class AddExpenseComponent {
 
   addExpense() {
     // Validations
+
+    if(this.amount > this.budgetService.rest) {
+      this.textInvalidForm = 'THE AMOUNT IS HIGER THAN THE REST';
+      this.formInvalid = true;
+      return;
+    }
+
     if (this.name === '' || this.amount <= 0) {
       this.formInvalid = true
     } else {
