@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Expense } from '../../../interfaces/expense';
+import { BudgetService } from '../../../services/budget.service';
 
 @Component({
   selector: 'app-add-expense',
@@ -12,6 +13,10 @@ export class AddExpenseComponent {
 
   formInvalid: boolean = false;
 
+  constructor(private budgetService: BudgetService) {
+
+  }
+
   addExpense() {
     // Validations
     if (this.name === '' || this.amount <= 0) {
@@ -23,9 +28,8 @@ export class AddExpenseComponent {
         amount: this.amount
       }
 
-      console.log(expense)
-
       // Send data using Observables
+      this.budgetService.addExpense(expense);
 
       // Reset the form
       this.formInvalid = false;
